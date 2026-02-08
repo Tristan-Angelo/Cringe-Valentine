@@ -622,11 +622,11 @@
   }
 
   .lightbox-nav.prev {
-    @apply -left-[70px];
+    @apply left-2.5;
   }
 
   .lightbox-nav.next {
-    @apply -right-[70px];
+    @apply right-2.5;
   }
 
   .lightbox-image {
@@ -660,11 +660,11 @@
   }
 
   .gallery-nav-prev {
-    @apply -left-[60px];
+    left: -60px;
   }
 
   .gallery-nav-next {
-    @apply -right-[60px];
+   right: -60px;
   }
 
   .photo-counter {
