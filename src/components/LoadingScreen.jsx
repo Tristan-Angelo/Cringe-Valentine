@@ -36,7 +36,7 @@ export default function LoadingScreen({ onComplete }) {
         }
         return prev + 2;
       });
-    }, 50);
+    }, 100);
 
     return () => {
       clearInterval(typeInterval);

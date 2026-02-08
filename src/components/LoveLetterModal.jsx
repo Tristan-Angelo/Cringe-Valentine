@@ -210,8 +210,7 @@ export default function LoveLetterModal({ isOpen, onClose }) {
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ repeat: Infinity, duration: 2 }}
             >
-              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-6 md:h-6" color="#FFC107" />
-              <span>Made with love, just for you</span>
+              <span>Made this just for you</span>
               <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-6 md:h-6" color="#FFC107" />
             </motion.div>
           </motion.div>

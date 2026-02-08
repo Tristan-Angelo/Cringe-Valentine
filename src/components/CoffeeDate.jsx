@@ -67,7 +67,7 @@ const buildCupStyle = (strength, sweet, milk) => {
 };
 
 const fortunes = [
-  "Today’s brew: Patience and joy. Sip slowly.",
+  "Today's brew: Patience and joy. Sip slowly.",
   "Your smile pairs best with a caramel latte.",
   "A surprise is percolating… trust the aroma.",
   "Add a spoon of courage, and call me soon.",
@@ -112,7 +112,7 @@ export default function CoffeeDate() {
       dessert ? "sweet" : "balanced",
     ];
 
-    // Ideal “us” blend target (tune these as you like)
+    // Ideal "us" blend target (tune these as you like)
     const target = { s: 65, w: 45, m: 55 };
     const distance =
       Math.abs(strength - target.s) +
@@ -123,12 +123,12 @@ export default function CoffeeDate() {
 
     const message =
       score > 90
-        ? "Perfect couple’s cup! This is totally us."
+        ? "Perfect couple's cup! This is totally us."
         : score > 75
           ? "Almost there—cozy, sweet, and meant to be."
           : score > 55
-            ? "Cute blend! I’d sip this with you."
-            : "Experimental vibes—fun, but let’s tweak together.";
+            ? "Cute blend! I'd sip this with you."
+            : "Experimental vibes—fun, but let's tweak together.";
 
     return { notes, score, message };
   }, [strength, sweet, milk]);
@@ -204,7 +204,7 @@ export default function CoffeeDate() {
         Coffee with you ☕
       </motion.h2>
       <p className="max-w-[700px]">
-        Let’s brew our perfect cup. Slide the dials, watch the mug change, and see our tasting notes.
+        Let's brew our perfect cup. Slide the dials, watch the mug change, and see our tasting notes.
       </p>
 
       <div className="flex flex-wrap items-start justify-center gap-8 mt-6 w-full max-w-[1000px]">
@@ -220,108 +220,162 @@ export default function CoffeeDate() {
             }}
             transition={{ duration: 0.5 }}
           >
-          <motion.div
-            className="relative w-[180px] h-[140px] rounded-b-2xl overflow-hidden"
-            style={{
-              background: "#FFF8F0",
-              border: "3px solid #E0CDAA",
-              borderTop: "12px solid #E0CDAA",
-              borderRadius: "18px 18px 28px 28px",
-              boxShadow: "inset 0 6px 12px rgba(0,0,0,0.05)",
-            }}
-          >
-            {/* Liquid */}
             <motion.div
-              className="absolute left-0 right-0 bottom-0"
+              className="relative w-[180px] h-[140px] rounded-b-2xl overflow-hidden"
               style={{
-                background: cupStyle.gradient,
-                height: `${cupStyle.liquidHeight}px`,
-                filter: cupStyle.filter,
+                background: "#FFF8F0",
+                border: "3px solid #E0CDAA",
+                borderTop: "12px solid #E0CDAA",
+                borderRadius: "18px 18px 28px 28px",
+                boxShadow: "inset 0 6px 12px rgba(0,0,0,0.05)",
               }}
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
+            >
+              {/* Liquid */}
+              <motion.div
+                className="absolute left-0 right-0 bottom-0"
+                style={{
+                  background: cupStyle.gradient,
+                  height: `${cupStyle.liquidHeight}px`,
+                  filter: cupStyle.filter,
+                }}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+              />
+
+              {/* Foam */}
+              <AnimatePresence>
+                {milk > 20 && (
+                  <motion.div
+                    key="foam"
+                    className="absolute left-2 right-2 overflow-visible"
+                    style={{
+                      height: `${cupStyle.foamHeight}px`,
+                      bottom: `${cupStyle.foamBottom}px`,
+                    }}
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                  >
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,247,230,0.9) 100%)",
+                        borderRadius: "999px",
+                        boxShadow: "0 6px 14px rgba(0,0,0,0.08)",
+                      }}
+                    />
+                    <div className="absolute -top-4 left-1 right-1 flex items-end justify-between">
+                      {[
+                        { w: 18, h: 18 },
+                        { w: 26, h: 26 },
+                        { w: 16, h: 16 },
+                        { w: 24, h: 24 },
+                        { w: 14, h: 14 },
+                        { w: 20, h: 20 },
+                      ].map((bubble, index) => {
+                        const scale = 0.8 + milk / 220;
+                        return (
+                          <div
+                            key={index}
+                            style={{
+                              width: `${bubble.w * scale}px`,
+                              height: `${bubble.h * scale}px`,
+                              background:
+                                "radial-gradient(circle at 35% 30%, #FFFFFF 0%, #FFF7E6 60%, rgba(255,235,210,0.8) 100%)",
+                              boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+                              borderRadius: "999px",
+                              transform: `translateY(${index % 2 === 0 ? 4 : 1}px)`,
+                              opacity: 0.95,
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                    <div
+                      className="absolute left-1 right-1"
+                      style={{
+                        height: `${Math.max(6, cupStyle.foamHeight * 0.35)}px`,
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,247,230,0.8) 100%)",
+                        borderRadius: "999px",
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+                        bottom: 0,
+                      }}
+                    />
+                    <div
+                      className="absolute left-0 right-0 top-0"
+                      style={{
+                        height: `${Math.max(6, cupStyle.foamHeight * 0.4)}px`,
+                        background:
+                          "linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 100%)",
+                      }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Rising steam hearts from mug */}
+              <div className="absolute left-1/2 -translate-x-1/2 -top-2">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    y: [
+                      -10,
+                      -40 - Math.min(milk, 50) - (isBrewing ? 20 : 0),
+                      -80 - Math.min(milk, 60) - (isBrewing ? 30 : 0),
+                    ],
+                  }}
+                  transition={{ duration: isBrewing ? 2.4 : 3, repeat: Infinity, delay: 0 }}
+                  className="absolute left-0"
+                >
+                  <Heart size={16} color="#FFAB91" fill="#FFAB91" />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    y: [
+                      -5,
+                      -30 - Math.min(milk, 50) - (isBrewing ? 18 : 0),
+                      -70 - Math.min(milk, 60) - (isBrewing ? 26 : 0),
+                    ],
+                  }}
+                  transition={{ duration: isBrewing ? 2.8 : 3.5, repeat: Infinity, delay: 0.8 }}
+                  className="absolute left-4"
+                >
+                  <Heart size={12} color="#FFC107" fill="#FFC107" />
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Handle */}
+            <div
+              className="absolute"
+              style={{
+                right: 18,
+                top: 46,
+                width: 56,
+                height: 70,
+                border: "8px solid #E0CDAA",
+                borderLeft: "none",
+                borderRadius: "0 34px 34px 0",
+              }}
             />
 
-            {/* Foam */}
-            <AnimatePresence>
-              {milk > 20 && (
-                <motion.div
-                  key="foam"
-                  className="absolute left-2 right-2 rounded-full"
-                  style={{
-                    background: "linear-gradient(180deg, #FFF 0%, #FFF7E6 100%)",
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
-                    height: `${cupStyle.foamHeight}px`,
-                    bottom: `${cupStyle.foamBottom}px`,
-                  }}
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                />
-              )}
-            </AnimatePresence>
-
-            {/* Rising steam hearts from mug */}
-            <div className="absolute left-1/2 -translate-x-1/2 -top-2">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  y: [
-                    -10,
-                    -40 - Math.min(milk, 50) - (isBrewing ? 20 : 0),
-                    -80 - Math.min(milk, 60) - (isBrewing ? 30 : 0),
-                  ],
-                }}
-                transition={{ duration: isBrewing ? 2.4 : 3, repeat: Infinity, delay: 0 }}
-                className="absolute left-0"
-              >
-                <Heart size={16} color="#FFAB91" fill="#FFAB91" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  y: [
-                    -5,
-                    -30 - Math.min(milk, 50) - (isBrewing ? 18 : 0),
-                    -70 - Math.min(milk, 60) - (isBrewing ? 26 : 0),
-                  ],
-                }}
-                transition={{ duration: isBrewing ? 2.8 : 3.5, repeat: Infinity, delay: 0.8 }}
-                className="absolute left-4"
-              >
-                <Heart size={12} color="#FFC107" fill="#FFC107" />
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Handle */}
-          <div
-            className="absolute"
-            style={{
-              right: 18,
-              top: 46,
-              width: 56,
-              height: 70,
-              border: "8px solid #E0CDAA",
-              borderLeft: "none",
-              borderRadius: "0 34px 34px 0",
-            }}
-          />
-
-          <motion.button
-            onClick={onBrew}
-            className="mt-5 flex items-center gap-2"
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
-            animate={{ boxShadow: isBrewing ? "0 0 0 8px rgba(255,171,145,0.25)" : "0 0 0 0 rgba(0,0,0,0)" }}
-            title="Brew this cup"
-            disabled={isBrewing}
-          >
-            <Coffee size={18} /> {isBrewing ? "Brewing.." : "Brew this cup"}
-          </motion.button>
+            <motion.button
+              onClick={onBrew}
+              className="mt-5 flex items-center gap-2"
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+              animate={{ boxShadow: isBrewing ? "0 0 0 8px rgba(255,171,145,0.25)" : "0 0 0 0 rgba(0,0,0,0)" }}
+              title="Brew this cup"
+              disabled={isBrewing}
+            >
+              <Coffee size={18} /> {isBrewing ? "Brewing.." : "Brew this cup"}
+            </motion.button>
 
             <div className="mt-3 text-sm text-muted">Brewed: {brewCount}x</div>
           </motion.div>
@@ -444,16 +498,21 @@ export default function CoffeeDate() {
           </div>
 
           {/* Coffee fortune */}
-          <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div className="mt-6">
             <motion.button
-              className="action-btn secondary flex items-center justify-center gap-2 w-full sm:w-auto text-center"
+              className="action-btn secondary flex items-center justify-center gap-2 w-full mb-4"
               whileTap={{ scale: 0.95 }}
               onClick={shuffleFortune}
               title="Shuffle coffee fortune"
             >
               <Shuffle size={16} /> Coffee fortune
             </motion.button>
-            <span className="text-sm text-muted sm:flex-1">{fortune}</span>
+
+            <div className="bg-cream/40 rounded-xl p-5 border border-cream">
+              <div className="text-base leading-relaxed text-dark font-medium text-center">
+                "{fortune}"
+              </div>
+            </div>
           </div>
 
           {brewedCups.length > 0 && (

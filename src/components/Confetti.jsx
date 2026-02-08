@@ -1,81 +1,87 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const colors = ["#FFD84D", "#FFC107", "#FFAB91", "#FFECB3", "#FF8A65", "#FFE082"];
-const shapes = ["circle", "square", "heart"];
+const colors = ["#FFD84D", "#FFC107", "#FFAB91", "#FFE082", "#FFCC02"];
 
-const generateConfetti = (count) => {
+function generateConfetti(count) {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
-    x: Math.random() * window.innerWidth,
-    color: colors[Math.floor(Math.random() * colors.length)],
-    shape: shapes[Math.floor(Math.random() * shapes.length)],
-    size: Math.random() * 12 + 6,
+    x: Math.random() * 100,
+    y: -10,
     rotation: Math.random() * 360,
-    delay: Math.random() * 0.5,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    size: Math.random() * 12 + 6,
+    delay: Math.random() * 1,
+    duration: Math.random() * 2 + 3,
   }));
-};
+}
 
-const ConfettiPiece = ({ piece }) => {
-  const getShape = () => {
-    if (piece.shape === "heart") {
-      return "💛";
-    }
-    return null;
-  };
-
+function ConfettiPiece({ piece }) {
   return (
     <motion.div
-      className="confetti-piece flex items-center justify-center"
+      className="absolute pointer-events-none z-[9999]"
       initial={{
-        x: piece.x,
-        y: -20,
-        rotate: 0,
+        x: `${piece.x}vw`,
+        y: `${piece.y}vh`,
+        rotate: piece.rotation,
+        scale: 0,
         opacity: 1,
       }}
       animate={{
-        y: window.innerHeight + 100,
-        rotate: piece.rotation + 720,
-        opacity: [1, 1, 0],
+        y: "120vh",
+        rotate: piece.rotation + 1080,
+        scale: 1,
+        opacity: 1,
+      }}
+      exit={{
+        scale: 0,
+        opacity: 0,
+        transition: { duration: 0.5 }
       }}
       transition={{
-        duration: 3 + Math.random() * 2,
+        duration: piece.duration,
         delay: piece.delay,
         ease: "easeOut",
       }}
       style={{
         width: piece.size,
         height: piece.size,
-        backgroundColor: piece.shape !== "heart" ? piece.color : "transparent",
-        borderRadius: piece.shape === "circle" ? "50%" : piece.shape === "square" ? "2px" : 0,
-        fontSize: piece.shape === "heart" ? piece.size : 0,
+        backgroundColor: piece.color,
+        borderRadius: "3px",
+        boxShadow: `0 0 6px ${piece.color}`,
       }}
-    >
-      {getShape()}
-    </motion.div>
+    />
   );
-};
+}
 
 export default function Confetti({ trigger }) {
   const [confettiPieces, setConfettiPieces] = useState([]);
 
   useEffect(() => {
     if (trigger) {
-      setConfettiPieces(generateConfetti(80));
-      
+      console.log("🎉 Confetti triggered!");
+      const newPieces = generateConfetti(100);
+      setConfettiPieces(newPieces);
+
       const timeout = setTimeout(() => {
         setConfettiPieces([]);
-      }, 5000);
-      
+      }, 6000);
+
       return () => clearTimeout(timeout);
     }
   }, [trigger]);
 
+  useEffect(() => {
+    console.log("Confetti pieces count:", confettiPieces.length);
+  }, [confettiPieces]);
+
   return (
-    <AnimatePresence>
-      {confettiPieces.map((piece) => (
-        <ConfettiPiece key={piece.id} piece={piece} />
-      ))}
-    </AnimatePresence>
+    <div className="fixed inset-0 pointer-events-none z-[9999]">
+      <AnimatePresence>
+        {confettiPieces.map((piece) => (
+          <ConfettiPiece key={piece.id} piece={piece} />
+        ))}
+      </AnimatePresence>
+    </div>
   );
 }
