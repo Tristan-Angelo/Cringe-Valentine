@@ -6,6 +6,7 @@ import LoveNotes from "./components/LoveNotes";
 import LoveLetterSection from "./components/LoveLetterSection";
 import Cats from "./components/Cats";
 import FinalMessage from "./components/FinalMessage";
+import CoffeeDate from "./components/CoffeeDate";
 import HeartRain from "./components/HeartRain";
 import MusicPlayer from "./components/MusicPlayer";
 import CursorHearts from "./components/CursorHearts";
@@ -101,6 +102,7 @@ function App() {
               title="Your Pets Say Hi 🐱"
               subtitle="Pet them! See how much love you can give! 💛"
             />
+            <CoffeeDate />
             <FinalMessage />
           </div>
         </motion.div>

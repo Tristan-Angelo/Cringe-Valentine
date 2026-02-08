@@ -8,6 +8,7 @@ const sections = [
   { id: "love-notes", label: "Love Notes" },
   { id: "love-letter", label: "My Letter" },
   { id: "cats", label: "Cats" },
+  { id: "coffee", label: "Coffee Date" },
   { id: "final", label: "Forever" },
 ];
 

@@ -270,6 +270,39 @@
     scroll-snap-stop: normal;
   }
 
+  /* Range inputs (for Coffee section) */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(255, 236, 179, 0.8);
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-yellow);
+    border: 2px solid var(--color-golden);
+    box-shadow: 0 4px 10px rgba(255, 216, 77, 0.5);
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-yellow);
+    border: 2px solid var(--color-golden);
+    box-shadow: 0 4px 10px rgba(255, 216, 77, 0.5);
+    cursor: pointer;
+  }
+
   .section-gradient {
     background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-soft-yellow) 50%, var(--color-cream) 100%);
   }
