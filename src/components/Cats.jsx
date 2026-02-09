@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import defaultCat from "../assets/yellow-cat.jpg";
+import defaultCat from "../assets/photos/cats/yellow-cat.jpg";
 import { Heart, Sparkles as SparklesIcon, Award, Star } from "lucide-react";
 import Sparkles from "./Sparkles";
 import FloatingPhotos from "./FloatingPhotos";
@@ -27,7 +27,7 @@ const milestones = [
   { count: 50, message: "Kitty's favorite human! 👑", emoji: "💝" },
 ];
 
-export default function Cats({ 
+export default function Cats({
   pets = [{ image: defaultCat, name: "Your Cat", sound: '/sounds/meow.mp3' }],
   title = "Your Cat Says Hi 🐱",
   subtitle = "Pet the kitty! See how much love you can give! 💛"
@@ -51,22 +51,22 @@ export default function Cats({
   const handleClick = (e) => {
     setPetCount((prev) => prev + 1);
     setMeowIndex((prev) => (prev + 1) % meowResponses.length);
-    
+
     // Cycle through pets every 10 clicks
     if ((petCount + 1) % 10 === 0 && pets.length > 1) {
       setCurrentPetIndex((prev) => (prev + 1) % pets.length);
     }
-    
+
     // Play meow sound with slight pitch variation
     const currentSound = new Audio(pets[currentPetIndex].sound || '/sounds/meow.mp3');
     currentSound.volume = 0.5;
     currentSound.currentTime = 0;
     currentSound.playbackRate = 0.9 + Math.random() * 0.3;
-    currentSound.play().catch(() => {});
-    
+    currentSound.play().catch(() => { });
+
     setIsWiggling(true);
     setTimeout(() => setIsWiggling(false), 500);
-    
+
     setShowLoveBar(true);
     setTimeout(() => setShowLoveBar(false), 2000);
 
@@ -77,7 +77,7 @@ export default function Cats({
       y: rect.top + rect.height / 2,
       angle: (i * 45) * (Math.PI / 180),
     }));
-    
+
     setHearts((prev) => [...prev, ...newHearts]);
 
     setTimeout(() => {
@@ -98,9 +98,9 @@ export default function Cats({
 
   return (
     <div id="cats" className="section section-gradient relative">
-      <FloatingPhotos count={4} />
+      <FloatingPhotos count={7} />
       <Sparkles count={8} />
-      
+
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -217,7 +217,7 @@ export default function Cats({
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               boxShadow: "0 15px 50px rgba(255, 216, 77, 0.4)",
             }}

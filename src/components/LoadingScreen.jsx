@@ -11,6 +11,26 @@ const floatingHearts = Array.from({ length: 12 }, (_, i) => ({
   duration: Math.random() * 3 + 2,
 }));
 
+// Generate sparkles positioned around the heart
+const generateSparkles = () => {
+  return Array.from({ length: 8 }, (_, i) => {
+    const angle = (i * 45) * (Math.PI / 180); // 45 degrees apart
+    const radius = 70; // Distance from heart center
+    return {
+      id: i,
+      angle,
+      radius,
+      x: Math.cos(angle) * radius,
+      y: Math.sin(angle) * radius,
+      size: 16 + Math.random() * 8, // 16-24px
+      delay: i * 0.2,
+      duration: 2 + Math.random() * 1,
+    };
+  });
+};
+
+const sparklePositions = generateSparkles();
+
 export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [loadingText, setLoadingText] = useState("");
@@ -78,9 +98,11 @@ export default function LoadingScreen({ onComplete }) {
 
       {/* Main content */}
       <motion.div className="flex flex-col items-center gap-8 z-10">
-        {/* Pulsing heart with sparkles */}
-        <motion.div className="relative">
+        {/* Pulsing heart with orbiting sparkles */}
+        <motion.div className="relative flex items-center justify-center w-[200px] h-[200px]">
+          {/* Central pulsing heart */}
           <motion.div
+            className="absolute"
             animate={{
               scale: [1, 1.2, 1],
               rotate: [0, 5, -5, 0],
@@ -94,28 +116,77 @@ export default function LoadingScreen({ onComplete }) {
             <Heart size={100} color="#FFD84D" fill="#FFD84D" />
           </motion.div>
 
-          {/* Sparkles at top-right corner */}
-          {[0, 1, 2].map((i) => (
+          {/* Orbiting sparkles around the heart */}
+          {sparklePositions.map((sparkle) => (
             <motion.div
-              key={i}
+              key={sparkle.id}
               className="absolute"
               style={{
-                top: `${55 + i * 8}px`,
-                right: `${1 + i * 10}px`,
+                left: "50%",
+                top: "50%",
+              }}
+              initial={{
+                x: sparkle.x - sparkle.size / 2,
+                y: sparkle.y - sparkle.size / 2,
+                scale: 0,
+                opacity: 0,
               }}
               animate={{
-                scale: [1, 1.4, 1],
-                opacity: [0.4, 1, 0.4],
-                rotate: [0, 15, 0],
+                x: sparkle.x - sparkle.size / 2,
+                y: sparkle.y - sparkle.size / 2,
+                scale: [0, 1.2, 1, 1.2, 0],
+                opacity: [0, 1, 0.8, 1, 0],
+                rotate: [0, 180, 360],
               }}
               transition={{
-                duration: 1.5 + i * 0.3,
+                duration: sparkle.duration,
                 repeat: Infinity,
-                delay: i * 0.2,
+                delay: sparkle.delay,
                 ease: "easeInOut",
               }}
             >
-              <Sparkles size={14 + i * 3} color="#FFC107" />
+              <Sparkles
+                size={sparkle.size}
+                color="#FFC107"
+                fill="#FFC107"
+                style={{
+                  filter: "drop-shadow(0 0 4px #FFC107)",
+                }}
+              />
+            </motion.div>
+          ))}
+
+          {/* Additional floating sparkles for extra magic */}
+          {[0, 1, 2, 3].map((i) => (
+            <motion.div
+              key={`extra-${i}`}
+              className="absolute"
+              style={{
+                left: "50%",
+                top: "50%",
+              }}
+              animate={{
+                x: [0, Math.cos(i * 90 * Math.PI / 180) * 90, 0],
+                y: [0, Math.sin(i * 90 * Math.PI / 180) * 90, 0],
+                scale: [0, 1, 0],
+                opacity: [0, 0.8, 0],
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.5 + 1,
+                ease: "easeInOut",
+              }}
+            >
+              <Sparkles
+                size={12}
+                color="#FFE082"
+                fill="#FFE082"
+                style={{
+                  filter: "drop-shadow(0 0 3px #FFE082)",
+                }}
+              />
             </motion.div>
           ))}
         </motion.div>

@@ -11,7 +11,7 @@ const MusicPlayer = forwardRef(({ autoPlay = false }, ref) => {
     useEffect(() => {
         // Set volume to 30% when component mounts
         if (audioRef.current) {
-            audioRef.current.volume = 0.05;
+            audioRef.current.volume = 0.3;
         }
     }, []);
 
@@ -76,7 +76,7 @@ const MusicPlayer = forwardRef(({ autoPlay = false }, ref) => {
     return (
         <>
             <audio ref={audioRef} loop preload="auto">
-                <source src="/music/magnolia.mp3" type="audio/mpeg" />
+                <source src="/music/Still-With-You.mp3" type="audio/mpeg" />
             </audio>
 
             <motion.div

@@ -4,58 +4,44 @@ import { Heart, X, ChevronLeft, ChevronRight, Mail, Sparkles } from "lucide-reac
 
 const loveLetters = [
   {
-    title: "My Dearest Love 💛",
-    content: `Every morning when I wake up, you're my first thought. Every night before I sleep, you're my last. You've become the rhythm of my heart, the smile on my face, and the warmth in my soul.
+    title: "5 Years of Us 💛",
+    content: `Can you believe it's been 5 years already? Looking back, those 4 years of LDR were some of the toughest challenges we ever faced. But they only proved one thing: that our love is stronger than any distance.
 
-I never knew love could feel this way until I met you. You've shown me what it means to be truly cherished, to be understood without words, and to be loved unconditionally.
+Every bus ride, every countdown, and every 'I miss you' over the screen led us here. I'm so incredibly proud of us for making it through those years and never giving up on each other.
 
-Thank you for choosing me. Thank you for loving me. Thank you for being you.
+Thank you for being my constant, even when you were miles away.
 
 Forever yours,
 Your Love 💛`,
   },
   {
-    title: "Why I Love You 🐱",
-    content: `Let me count the ways...
+    title: "Home is You 🏠",
+    content: `Being under the same roof for this past year has been the greatest gift I could ever ask for. I no longer have to say goodbye at a terminal or wait for a video call to see your face.
 
-I love the way your eyes light up when you laugh.
-I love how you make even ordinary moments feel magical.
-I love your kindness, your patience, your beautiful heart.
-I love how you always know how to make me smile.
-I love the little things you do that you think I don't notice.
-I love falling asleep knowing you're mine.
-I love waking up knowing I get to love you again.
+I love the simple things now—sharing our morning coffee, deciding what to have for dinner, and just knowing you're in the next room. You've turned our space into a true home, and I've never been happier.
 
-But most of all, I love you. Simply, completely, endlessly.
+One year down, a lifetime to go in our happy place.
 
 Yours always 💛`,
   },
   {
-    title: "Our Story ✨",
-    content: `From the moment our paths crossed, I knew my life would never be the same. You walked into my world like sunshine breaking through clouds, and suddenly everything made sense.
+    title: "Our Sweet Moments ✨",
+    content: `I cherish all the little things that make us 'us.' From our quiet mornings to our late-night talks, every second spent with you is a second well spent. You've shown me what it means to be truly loved and understood without even saying a word.
 
-We've built something beautiful together. Every laugh, every tear, every adventure - they're all chapters in our story. And I can't wait to write a million more with you.
+It's not just about the big milestones, but the way you make every ordinary day feel like a beautiful celebration. I wouldn't want to share this life with anyone else.
 
-You're not just my love, you're my best friend, my partner in crime, my home.
-
-Here's to us, to our past, our present, and our beautiful future together.
+Here's to a million more sweet memories together.
 
 With all my heart,
 Yours forever 💛`,
   },
   {
     title: "A Promise 💝",
-    content: `I promise to love you on your best days and your worst.
-I promise to make you laugh when you want to cry.
-I promise to hold your hand through every storm.
-I promise to celebrate every victory, no matter how small.
-I promise to always be your biggest cheerleader.
-I promise to grow old with you and still look at you the same way.
-I promise to choose you, every single day.
+    content: `After 5 beautiful years, my promise to you remains the same, but even stronger now. I promise to keep choosing you every single day, just like I did when we were miles apart.
 
-These aren't just words - they're my heart's commitment to you.
+I promise to be your home, your best friend, and your biggest supporter. No matter what life throws our way, as long as I'm with you, I have everything I need.
 
-I love you more than words could ever say.
+Thank you for 5 amazing years. I love you more than words can ever express.
 
 Forever and always,
 Your one and only 💛`,

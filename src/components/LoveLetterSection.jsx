@@ -11,7 +11,7 @@ export default function LoveLetterSection() {
 
   return (
     <div id="love-letter" className="section section-gradient relative">
-      <FloatingPhotos count={4} />
+      <FloatingPhotos count={6} />
       <SparklesEffect count={15} />
 
       <motion.h2

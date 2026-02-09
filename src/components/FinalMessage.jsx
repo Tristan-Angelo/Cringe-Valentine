@@ -33,23 +33,9 @@ export default function FinalMessage() {
     setShowExtraConfetti(false);
   }, []);
 
-  const shareMessage = useCallback(() => {
-    if (navigator.share) {
-      navigator.share({
-        title: 'A Special Valentine Message',
-        text: 'Someone shared their love with me! 💛',
-        url: window.location.href,
-      });
-    } else {
-      // Fallback - copy to clipboard
-      navigator.clipboard.writeText(window.location.href);
-      // Could add a toast notification here
-    }
-  }, []);
-
   return (
     <div id="final" className="section relative overflow-hidden">
-      <FloatingPhotos count={5} />
+      <FloatingPhotos count={8} />
       <Sparkles count={15} />
 
       <Confetti trigger={answered} />
@@ -215,7 +201,7 @@ export default function FinalMessage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 }}
-              className="flex gap-4 mt-6"
+              className="mt-6"
             >
               <motion.button
                 onClick={resetExperience}
@@ -225,16 +211,6 @@ export default function FinalMessage() {
               >
                 <RotateCcw size={16} />
                 Experience Again
-              </motion.button>
-
-              <motion.button
-                onClick={shareMessage}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="flex items-center gap-2 px-4 py-2 bg-yellow/20 rounded-xl text-dark font-medium"
-              >
-                <Share2 size={16} />
-                Share Love
               </motion.button>
             </motion.div>
 

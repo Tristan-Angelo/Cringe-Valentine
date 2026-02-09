@@ -70,7 +70,7 @@ export default function LoveNotes() {
 
   return (
     <div id="love-notes" className="section relative">
-      <FloatingPhotos count={4} />
+      <FloatingPhotos count={8} />
       <Sparkles count={10} />
       
       <motion.h2

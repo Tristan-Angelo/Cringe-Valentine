@@ -1,17 +1,73 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Heart, ZoomIn, Camera } from "lucide-react";
-import photo1 from "../assets/photos/cat.jpg";
-import photo2 from "../assets/photos/cat.jpg";
+import photo1 from "../assets/photos/gallery/Gallery-1.jpg";
+import photo2 from "../assets/photos/gallery/Gallery-2.jpg";
+import photo3 from "../assets/photos/gallery/Gallery-3.jpg";
+import photo4 from "../assets/photos/gallery/Gallery-4.jpg";
+import photo5 from "../assets/photos/gallery/Gallery-5.jpg";
+import photo6 from "../assets/photos/gallery/Gallery-6.jpg";
+import photo7 from "../assets/photos/gallery/Gallery-7.jpg";
+import photo8 from "../assets/photos/gallery/Gallery-8.jpg";
+import photo9 from "../assets/photos/gallery/Gallery-9.jpg";
+import photo10 from "../assets/photos/gallery/Gallery-10.jpg";
+import photo11 from "../assets/photos/gallery/Gallery-11.jpg";
+import photo12 from "../assets/photos/gallery/Gallery-12.jpg";
+import photo13 from "../assets/photos/gallery/Gallery-13.jpg";
+import photo14 from "../assets/photos/gallery/Gallery-14.jpg";
+import photo15 from "../assets/photos/gallery/Gallery-15.jpg";
+import photo16 from "../assets/photos/gallery/Gallery-16.jpg";
+import photo17 from "../assets/photos/gallery/Gallery-17.jpg";
+import photo18 from "../assets/photos/gallery/Gallery-18.jpg";
+import photo19 from "../assets/photos/gallery/Gallery-19.jpg";
+import photo20 from "../assets/photos/gallery/Gallery-20.jpg";
+import photo21 from "../assets/photos/gallery/Gallery-21.jpg";
+import photo22 from "../assets/photos/gallery/Gallery-22.jpg";
+import photo23 from "../assets/photos/gallery/Gallery-23.jpg";
+import photo24 from "../assets/photos/gallery/Gallery-24.jpg";
+import photo25 from "../assets/photos/gallery/Gallery-25.jpg";
+import photo26 from "../assets/photos/gallery/Gallery-26.jpg";
+import photo27 from "../assets/photos/gallery/Gallery-27.jpg";
+import photo28 from "../assets/photos/gallery/Gallery-28.jpg";
+import photo29 from "../assets/photos/gallery/Gallery-29.jpg";
+import photo30 from "../assets/photos/gallery/Gallery-30.jpg";
+import photo31 from "../assets/photos/gallery/Gallery-31.jpg";
 import Sparkles from "./Sparkles";
 import FloatingPhotos from "./FloatingPhotos";
 import ImageLightbox from "./ImageLightbox";
 
 const photos = [
-    { img: photo1, text: "This moment made me fall harder. 💛" },
-    { img: photo2, text: "My favorite smile in the world. 🐱" },
-    { img: photo1, text: "Every moment with you is precious. ✨" },
-    { img: photo2, text: "My heart belongs to you. 💝" },
+    { img: photo1, text: "5 years of choosing each other, every single day. 💛" },
+    { img: photo2, text: "4 years of distance only proved how strong our love is. ✨" },
+    { img: photo3, text: "Finally under the same roof. Every day with you is a gift. 🏠" },
+    { img: photo4, text: "No more screen time, just you right here beside me. ❤️" },
+    { img: photo5, text: "Your smile is my favorite view in the whole world. 🌟" },
+    { img: photo6, text: "Thank you for being my constant through everything. ⚓" },
+    { img: photo7, text: "I love the way you look at me when you're happy. 😊" },
+    { img: photo8, text: "5 years down, a lifetime to go. ♾️" },
+    { img: photo9, text: "From long distance to sharing every single morning. ☕" },
+    { img: photo10, text: "You make every ordinary moment feel so magical. 🪄" },
+    { img: photo11, text: "My heart beats for you, and only you. 💓" },
+    { img: photo12, text: "4 years of 'I miss you' finally turned into 'I'm home.' 🏡" },
+    { img: photo13, text: "Being with you is exactly where I want to be. 📍" },
+    { img: photo14, text: "You are the best thing that ever happened to me. ✨" },
+    { img: photo15, text: "This first year of living together has been a dream. ☁️" },
+    { img: photo16, text: "The wait was long, but having you here is everything. 💍" },
+    { img: photo17, text: "I fall in love with you more and more every day. 💞" },
+    { img: photo18, text: "Thank you for 5 years of beautiful memories. 📖" },
+    { img: photo19, text: "Your love is the only sunshine I'll ever need. ☀️" },
+    { img: photo20, text: "I'm so grateful for every second I spend with you. ⏳" },
+    { img: photo21, text: "5 years of us, and I'd still choose you every time. 💍" },
+    { img: photo22, text: "Cozy nights with you are my favorite kind of nights. 🌙" },
+    { img: photo23, text: "You are my person, my best friend, and my home. 💏" },
+    { img: photo24, text: "I love our little life together under one roof. 🏠✨" },
+    { img: photo25, text: "4 years of waiting just made this moment sweeter. 🍬" },
+    { img: photo26, text: "You are my forever and always. 🔒" },
+    { img: photo27, text: "Everything is better when I'm holding your hand. 🤝" },
+    { img: photo28, text: "5 years of beautiful history, and so much more to come. 🌱" },
+    { img: photo29, text: "You make my world a much brighter place. 🌎" },
+    { img: photo30, text: "One year under the same roof, and a lifetime of love ahead. 💞" },
+    { img: photo31, text: "You are my home, today and for all my tomorrows. 🏡💍" },
 ];
 
 export default function Gallery() {
@@ -72,7 +128,7 @@ export default function Gallery() {
 
     return (
         <div id="gallery" className="section section-gradient relative">
-            <FloatingPhotos count={4} />
+            <FloatingPhotos count={7} />
             <Sparkles count={12} />
 
             <motion.h2
@@ -180,26 +236,34 @@ export default function Gallery() {
                 </motion.button>
             </div>
 
-            {/* Dots indicator */}
-            <div className="flex gap-3 mt-5">
-                {photos.map((_, index) => (
-                    <motion.button
-                        key={index}
-                        onClick={() => {
-                            setDirection(index > currentIndex ? 1 : -1);
-                            setCurrentIndex(index);
-                        }}
-                        className="h-3 rounded-[10px] p-0 border-none"
-                        style={{
-                            width: index === currentIndex ? 30 : 12,
-                            background: index === currentIndex ? "#FFD84D" : "#FFECB3",
-                            boxShadow: index === currentIndex ? "0 0 15px rgba(255, 216, 77, 0.5)" : "none",
-                        }}
-                        whileHover={{ scale: 1.2 }}
-                        animate={{ width: index === currentIndex ? 30 : 12 }}
-                        transition={{ duration: 0.3 }}
-                    />
-                ))}
+            {/* Dots indicator - Limited to 4 dots */}
+            <div className="flex flex-wrap justify-center gap-2 mt-5 max-w-full px-4">
+                {[0, 1, 2, 3].map((dotIndex) => {
+                    const photosPerDot = Math.ceil(photos.length / 4);
+                    const startIndex = dotIndex * photosPerDot;
+                    const endIndex = Math.min((dotIndex + 1) * photosPerDot, photos.length);
+                    const isActive = currentIndex >= startIndex && currentIndex < endIndex;
+
+                    return (
+                        <motion.button
+                            key={dotIndex}
+                            onClick={() => {
+                                setDirection(startIndex > currentIndex ? 1 : -1);
+                                setCurrentIndex(startIndex);
+                            }}
+                            className="h-3 rounded-[10px] p-0 border-none"
+                            style={{
+                                width: isActive ? 30 : 12,
+                                background: isActive ? "#FFD84D" : "#FFECB3",
+                                boxShadow: isActive ? "0 0 15px rgba(255, 216, 77, 0.5)" : "none",
+                            }}
+                            whileHover={{ scale: 1.2 }}
+                            animate={{ width: isActive ? 30 : 12 }}
+                            transition={{ duration: 0.3 }}
+                            title={`Photos ${startIndex + 1}-${endIndex}`}
+                        />
+                    );
+                })}
             </div>
 
             {/* Swipe hint */}

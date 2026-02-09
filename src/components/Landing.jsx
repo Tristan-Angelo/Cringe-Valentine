@@ -17,7 +17,7 @@ export default function Landing() {
 
   return (
     <div id="landing" className="section relative overflow-hidden">
-      <FloatingPhotos count={5} />
+      <FloatingPhotos count={8} />
       <Sparkles count={20} />
       
       {/* Floating hearts decoration */}

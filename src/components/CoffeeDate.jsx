@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Coffee, Heart, Shuffle, CupSoda } from "lucide-react";
 import Confetti from "./Confetti";
+import FloatingPhotos from "./FloatingPhotos";
 
 // Helper to clamp values
 const clamp = (n, min = 0, max = 100) => Math.max(min, Math.min(max, n));
@@ -179,8 +180,9 @@ export default function CoffeeDate() {
 
   return (
     <section id="coffee" className="section section-gradient relative overflow-hidden">
+      <FloatingPhotos count={8} />
       {/* Steam hearts background */}
-      <div className="absolute inset-0 pointer-events-none opacity-60" aria-hidden>
+      <div className="absolute inset-0 pointer-events-none opacity-40" aria-hidden>
         {steamField.map((heart, i) => (
           <motion.div
             key={i}
@@ -211,7 +213,7 @@ export default function CoffeeDate() {
         <div className="flex flex-col items-center gap-6 w-[320px] max-w-[92vw] order-1 md:order-1">
           {/* Left mug visual - Your cup */}
           <motion.div
-            className="relative bg-white rounded-3xl shadow-card p-6 flex flex-col items-center w-full"
+            className="relative bg-white opacity-100 rounded-3xl shadow-card p-6 flex flex-col items-center w-full"
             initial={{ opacity: 0, y: 10 }}
             animate={{
               opacity: 1,
@@ -382,7 +384,7 @@ export default function CoffeeDate() {
 
           {/* Last brewed cup */}
           <motion.div
-            className="relative bg-white rounded-3xl shadow-card p-6 flex flex-col items-center w-full"
+            className="relative bg-white opacity-100 rounded-3xl shadow-card p-6 flex flex-col items-center w-full"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -432,7 +434,7 @@ export default function CoffeeDate() {
 
         {/* Controls + notes */}
         <motion.div
-          className="bg-white rounded-3xl shadow-card p-6 w-[360px] max-w-[92vw] text-left order-2 md:order-2"
+          className="bg-white opacity-100 rounded-3xl shadow-card p-6 w-[360px] max-w-[92vw] text-left order-2 md:order-2"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
         >
