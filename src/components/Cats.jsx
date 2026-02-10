@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import defaultCat from "../assets/photos/cats/yellow-cat.jpg";
+import defaultCat from "../assets/photos/cats/Stormy.jpg";
 import { Heart, Sparkles as SparklesIcon, Award, Star } from "lucide-react";
 import Sparkles from "./Sparkles";
 import FloatingPhotos from "./FloatingPhotos";
@@ -21,16 +21,16 @@ const meowResponses = [
 ];
 
 const milestones = [
-  { count: 5, message: "Kitty is warming up to you! 🐱", emoji: "😺" },
-  { count: 10, message: "Kitty loves the pets! 💛", emoji: "😻" },
+  { count: 5, message: "{name} is warming up to you! 🐱", emoji: "😺" },
+  { count: 10, message: "{name} loves the pets! 💛", emoji: "😻" },
   { count: 20, message: "You're a certified cat whisperer! 🏆", emoji: "🎉" },
-  { count: 50, message: "Kitty's favorite human! 👑", emoji: "💝" },
+  { count: 50, message: "{name}'s favorite human! 👑", emoji: "💝" },
 ];
 
 export default function Cats({
   pets = [{ image: defaultCat, name: "Your Cat", sound: '/sounds/meow.mp3' }],
   title = "Your Cat Says Hi 🐱",
-  subtitle = "Pet the kitty! See how much love you can give! 💛"
+  subtitle = "Pet them! See how much love you can give! 💛"
 }) {
   const [meowIndex, setMeowIndex] = useState(-1);
   const [hearts, setHearts] = useState([]);
@@ -52,8 +52,8 @@ export default function Cats({
     setPetCount((prev) => prev + 1);
     setMeowIndex((prev) => (prev + 1) % meowResponses.length);
 
-    // Cycle through pets every 10 clicks
-    if ((petCount + 1) % 10 === 0 && pets.length > 1) {
+    // Cycle through pets every 3 clicks
+    if ((petCount + 1) % 3 === 0 && pets.length > 1) {
       setCurrentPetIndex((prev) => (prev + 1) % pets.length);
     }
 
@@ -188,7 +188,7 @@ export default function Cats({
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Award size={24} color="#FFD84D" />
-            <span>{milestone.message}</span>
+            <span>{milestone.message.replace("{name}", currentPet.name)}</span>
             <span className="milestone-emoji">{milestone.emoji}</span>
           </motion.div>
         )}

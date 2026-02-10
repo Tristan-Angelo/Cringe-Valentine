@@ -17,28 +17,24 @@ import CoffeeDate from "./components/CoffeeDate";
 import FinalMessage from "./components/FinalMessage";
 
 // Import pet images
-import yellowCat from "./assets/photos/cats/yellow-cat.jpg";
-import catPhoto from "./assets/photos/cats/cat.jpg";
+import stormy from "./assets/photos/cats/Stormy.jpg";
+import pepper from "./assets/photos/cats/Pepper.jpg";
+import snowy from "./assets/photos/cats/Snowy.jpg";
+import ginger from "./assets/photos/cats/Ginger.jpg";
+import toton from "./assets/photos/cats/Toton.jpg";
+import awok from "./assets/photos/cats/Awok.jpg";
+import sylvester from "./assets/photos/cats/Sylvester.jpg";
 
 // Pet configuration - Add your pet images here!
-// You can add multiple pets and they will cycle every 10 clicks
+// You can add multiple pets and they will cycle every 3 clicks
 const petConfig = [
-  {
-    image: yellowCat,
-    name: "Fluffy",
-    sound: '/sounds/meow.mp3'
-  },
-  {
-    image: catPhoto,
-    name: "Whiskers",
-    sound: '/sounds/meow.mp3'
-  },
-  // Add more pets here! Example:
-  // { 
-  //   image: yourDogImage, 
-  //   name: "Buddy", 
-  //   sound: '/sounds/bark.mp3' 
-  // },
+  { image: stormy, name: "Stormy", sound: "/sounds/meow.mp3" },
+  { image: pepper, name: "Pepper", sound: "/sounds/meow.mp3" },
+  { image: snowy, name: "Snowy", sound: "/sounds/meow.mp3" },
+  { image: ginger, name: "Ginger", sound: "/sounds/meow.mp3" },
+  { image: toton, name: "Toton", sound: "/sounds/meow.mp3" },
+  { image: awok, name: "Awok", sound: "/sounds/meow.mp3" },
+  { image: sylvester, name: "Sylvester", sound: "/sounds/meow.mp3" },
 ];
 
 function App() {

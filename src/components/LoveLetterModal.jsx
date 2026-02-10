@@ -16,7 +16,7 @@ Your Love 💛`,
   },
   {
     title: "Home is You 🏠",
-    content: `Being under the same roof for this past year has been the greatest gift I could ever ask for. I no longer have to say goodbye at a terminal or wait for a video call to see your face.
+    content: `Being under the same roof for this past year has been the greatest gift I could ever ask for. I'm so happy that I no longer have to wait for a video call just to see your face or count down the days until our next moment together.
 
 I love the simple things now—sharing our morning coffee, deciding what to have for dinner, and just knowing you're in the next room. You've turned our space into a true home, and I've never been happier.
 

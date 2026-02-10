@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Heart, ZoomIn, Camera } from "lucide-react";
+import photo from "../assets/photos/gallery/Gallery-0.jpg";
 import photo1 from "../assets/photos/gallery/Gallery-1.jpg";
 import photo2 from "../assets/photos/gallery/Gallery-2.jpg";
 import photo3 from "../assets/photos/gallery/Gallery-3.jpg";
@@ -32,15 +33,19 @@ import photo28 from "../assets/photos/gallery/Gallery-28.jpg";
 import photo29 from "../assets/photos/gallery/Gallery-29.jpg";
 import photo30 from "../assets/photos/gallery/Gallery-30.jpg";
 import photo31 from "../assets/photos/gallery/Gallery-31.jpg";
+import photo32 from "../assets/photos/gallery/Gallery-32.jpg";
+import photo33 from "../assets/photos/gallery/Gallery-33.jpg";
+import photo34 from "../assets/photos/gallery/Gallery-34.jpg";
 import Sparkles from "./Sparkles";
 import FloatingPhotos from "./FloatingPhotos";
 import ImageLightbox from "./ImageLightbox";
 
 const photos = [
+    { img: photo, text: "5 years ago, you walked into my life and changed it forever. ✨" },
     { img: photo1, text: "5 years of choosing each other, every single day. 💛" },
     { img: photo2, text: "4 years of distance only proved how strong our love is. ✨" },
-    { img: photo3, text: "Finally under the same roof. Every day with you is a gift. 🏠" },
-    { img: photo4, text: "No more screen time, just you right here beside me. ❤️" },
+    { img: photo3, text: "5 years of laughter, love, and endless adventures together. 🗺️✨" },
+    { img: photo4, text: "No matter where we go, as long as I'm with you, I'm happy. 🏔️💛" },
     { img: photo5, text: "Your smile is my favorite view in the whole world. 🌟" },
     { img: photo6, text: "Thank you for being my constant through everything. ⚓" },
     { img: photo7, text: "I love the way you look at me when you're happy. 😊" },
@@ -67,7 +72,10 @@ const photos = [
     { img: photo28, text: "5 years of beautiful history, and so much more to come. 🌱" },
     { img: photo29, text: "You make my world a much brighter place. 🌎" },
     { img: photo30, text: "One year under the same roof, and a lifetime of love ahead. 💞" },
-    { img: photo31, text: "You are my home, today and for all my tomorrows. 🏡💍" },
+    { img: photo31, text: "You are my home, today and for all my tomorrows. 🏡" },
+    { img: photo32, text: "Finally under the same roof. Every day with you is a gift. 🏠" },
+    { img: photo33, text: "No more screen time, just you right here beside me. ❤️" },
+    { img: photo34, text: "To many more years of us making beautiful memories together. 🥂♾️" },
 ];
 
 export default function Gallery() {

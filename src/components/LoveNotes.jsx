@@ -24,11 +24,11 @@ const notes = [
   },
   {
     front: "Did you know? 💝",
-    back: "Thinking of you is my favorite thing to do.",
+    back: "You make even the ordinary days better.",
   },
   {
     front: "Hey you! 😊",
-    back: "You're the best thing that ever happened to me.",
+    back: "Life feels lighter with you around.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function LoveNotes() {
   const shuffleCards = () => {
     setIsShuffling(true);
     setRevealedCount(0);
-    
+
     setTimeout(() => {
       const shuffled = [...notes].sort(() => Math.random() - 0.5);
       setShuffledNotes(shuffled);
@@ -72,7 +72,7 @@ export default function LoveNotes() {
     <div id="love-notes" className="section relative">
       <FloatingPhotos count={8} />
       <Sparkles count={10} />
-      
+
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -131,12 +131,12 @@ export default function LoveNotes() {
       {/* Cards grid */}
       <motion.div
         className="notes-grid"
-        animate={isShuffling ? { 
-          opacity: 0, 
+        animate={isShuffling ? {
+          opacity: 0,
           scale: 0.9,
           rotateY: 10
-        } : { 
-          opacity: 1, 
+        } : {
+          opacity: 1,
           scale: 1,
           rotateY: 0
         }}
@@ -147,29 +147,29 @@ export default function LoveNotes() {
             <motion.div
               key={`${note.front}-${shuffleKey}-${index}`}
               layout
-              initial={{ 
-                opacity: 0, 
-                scale: 0.5, 
+              initial={{
+                opacity: 0,
+                scale: 0.5,
                 y: -50,
                 rotateY: 180
               }}
-              animate={{ 
-                opacity: 1, 
-                scale: 1, 
+              animate={{
+                opacity: 1,
+                scale: 1,
                 y: 0,
                 rotateY: 0
               }}
-              exit={{ 
-                opacity: 0, 
-                scale: 0.5, 
+              exit={{
+                opacity: 0,
+                scale: 0.5,
                 y: 50,
                 rotateY: -180
               }}
-              transition={{ 
-                delay: index * 0.08, 
-                type: "spring", 
-                stiffness: 150, 
-                damping: 15 
+              transition={{
+                delay: index * 0.08,
+                type: "spring",
+                stiffness: 150,
+                damping: 15
               }}
             >
               <FlipCard
