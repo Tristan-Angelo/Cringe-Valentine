@@ -174,7 +174,7 @@ export default function NameVerification({ onVerified }) {
                                     Get the fck outta here!
                                 </h3>
                                 <p className="letter-text mt-2 mb-6 text-center">
-                                    This ain't for you! You're not that person! {"💔"}
+                                    This ain't for you, you dumbass bxtch! {"💔"}
                                 </p>
 
                                 <button
